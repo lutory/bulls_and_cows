@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Bulls and Cows</title>
+<link href='http://fonts.googleapis.com/css?family=Loved+by+the+King' rel='stylesheet' type='text/css'>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="functions.js"></script>
+<link rel="stylesheet" href="css/main.css" type="text/css" />
+</head>
+
+<body>
+<section id="board">
+
+	<form>
+    	<label>Your guess: </label>
+    	<input type="text" id="guess" maxlength="4" />
+    	<a href="javaScript:void(0);" id="check" class="button big green">Check <span>your number</span></a>
+        <a href="javaScript:void(0);" id="restart" class="button big green">Start <span>new game</span></a>
+    </form>
+
+	
+    <table id="results">
+    	<tr>
+            <th>Your number</th>
+            <th><img alt="bulls" src="images/bull_icon.png" height="32" width="29" /></th>
+            <th><img alt="cows" src="images/cow_icon.png" height="32" width="29" /></th>
+        </tr>
+    </table>
+    <p id="tries">You have <span>10</span> &nbsp; more tries left.</p>
+
+</section>
+<section id="rules">
+	<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which</p>
+    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which</p>
+    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which</p>
+    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which</p>
+</section>
+<section id="cow">
+	<div id="bubble">
+    	<section id="play_instructions">
+    		<h2>Wanna <a id="play" href="javaScript:void(0);" title="Play Bulls &amp; Cows">play</a> with me?</h2>
+        	<h2>Or read <a id="rules-btn" href="javaScript:void(0);" title="How to play Bulls &amp; Cows">how to play</a> first.</h2>
+        </section>
+    </div>
+</section>
+</body>
+</html>
