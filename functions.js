@@ -125,7 +125,7 @@ $("#check").click( function(){
 				$("#check").hide();
 				$("#restart").css("display","inline-block");
 			}
-			alert(num);
+			
 			$("#results").append("<tr><td>"+guess+"</td><td>"+bulls+"</td><td>"+cows+"</td></tr>");
 			$("#tries span").text(tries);
 			$("#guess").val("");
