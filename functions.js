@@ -2,7 +2,8 @@ $(document).ready(function(e) {
 
 var num = generateNum();	
 var tries = 9;
-	
+
+// Cow animation	
 $('#cow').animate(
 	{ right: 95 }, 
 	'slow', 
@@ -14,6 +15,8 @@ $('#cow').animate(
 			'swing'
 	);
 });
+
+// Show rules
 $("#rules-btn").click( function(){
 	
 	$('#rules').animate(
@@ -27,21 +30,24 @@ $("#rules-btn").click( function(){
 	var num = generateNum();
 	
 });
+
+// Play button clicked
 $("#play").click( function(){
-	
+	$("#guess").prop('disabled', false);
 	$('#board').animate(
 		{ top: 0 }, 
 		'slow', 
 		'swing', 
 		function() { 
 			cowMessage("<h2>I came up with a number. <br /> Can you guess it?</h2>");
+			$("#guess").focus();
 	});
 
 	var num = generateNum();
 	
 });
 
-	
+// Function that generates 4-digit number (1234)
 function generateNum(){
 	var numArr = [1,2,3,4,5,6,7,8,9];
 	var num = "";
@@ -55,6 +61,7 @@ function generateNum(){
 	return num;
 }
 
+// Function that checks if there are dublicate numbers (1223)
 function dublicateNums(number){
 	var x=1; 
 	for( var k=0; k<4; k++){
@@ -68,15 +75,23 @@ function dublicateNums(number){
 	return false;
 }
 
+// Function that insertes text in the cow bubble
 function cowMessage(message){
 	$('#play_instructions').html(message);
 }
+
+// When you hit restart button
 $("#restart").click(function(e) {
-    window.location.reload();
+    $("#play").click();
 });
-$("#check").click( function(){
-		
-		var guess = $("#guess").val();
+
+// Checks the user number , puts result ot the table and output error if any
+
+
+$('#check').on('keypress click', function(e){
+	e.preventDefault();
+	if (e.which === 13 || e.type === 'click') { 
+      var guess = $("#guess").val();
 		var patt=new RegExp("^[1-9]{4}$");
 		
 		var ifDub = dublicateNums(guess);
@@ -92,7 +107,7 @@ $("#check").click( function(){
 			cowMessage("<h2>Ahh, no! You can't <br /> dublicate digits</h2>");
 		}
 		else{
-			
+			$("#guess").focus();
 			guess = guess.toString();
 			
 			var bulls = 0;
@@ -124,6 +139,7 @@ $("#check").click( function(){
 				
 				$("#check").hide();
 				$("#restart").css("display","inline-block");
+				$("#guess").prop('disabled', true);
 			}
 			
 			$("#results").append("<tr><td>"+guess+"</td><td>"+bulls+"</td><td>"+cows+"</td></tr>");
@@ -137,12 +153,16 @@ $("#check").click( function(){
 				else{
 					cowMessage("<h2>Sorry! You failed <br /> My number was <span>"+num+"</span></h2>");
 				}
+				$("#guess").prop('disabled', true);
 				$("#check").hide();
 				$("#restart").css("display","inline-block");
 			}
 			tries--;
 		}
-	
-});	
+    }
+});
+
+
+
 
 });
